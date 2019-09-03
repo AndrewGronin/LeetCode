@@ -1,0 +1,24 @@
+class Solution {
+public:
+    string convert(string s, int numRows) {
+        if (numRows == 1)  {return s;}
+       vector<string> m(min(numRows, int(s.size())));
+        string ans;
+        bool direction = false;//true -to bottom  false -to top
+        int cur = 0;
+        for(char i : s){
+                m[cur] += i;
+            //cout << m[cur];
+            if (cur == 0 || cur ==numRows-1){
+                direction = !direction;
+            }
+               cur += direction ? 1 : -1;
+                    
+        }
+       // cout<<m[0]<<" " <<m[1]<<" "<<m[2];
+        for (string i : m ){
+         ans+= i;   
+        }
+        return ans;
+    }
+};
