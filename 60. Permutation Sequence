@@ -1,0 +1,19 @@
+class Solution {
+public:
+    string getPermutation(int n, int k) {
+        vector<int> v(n);
+        
+       // cout<<v;
+        iota(begin(v),end(v),1);
+        //cout<<v;
+        for(int i = 0; i< k-1 ;++i){
+            next_permutation(v.begin(),v.end());
+        }
+        string res;
+        for(int i:v){
+            res+=to_string(i);
+        }
+        
+       return res; 
+    }
+};
