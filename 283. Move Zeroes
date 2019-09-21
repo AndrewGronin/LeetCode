@@ -1,0 +1,16 @@
+class Solution {
+public:
+    void moveZeroes(vector<int>& nums) {
+        int zeroc = 0;
+        //int i =0;
+        for(int i=0;i<nums.size();++i){
+            if(nums[i]==0 && i <nums.size()-zeroc ){
+                nums.erase(nums.begin()+i);
+                nums.push_back(0);
+                zeroc++;
+                i--;
+                
+            }
+        }
+    }
+};

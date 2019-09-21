@@ -1,0 +1,21 @@
+class Solution {
+public:
+    int uniqueMorseRepresentations(vector<string>& words) {
+     //  vector<char> Alfabet = {'a'..'z'};
+        
+        
+        
+        
+        vector<string> morse = {".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-",".-..","--","-.","---",".--.","--.-",".-.","...","-","..-","...-",".--","-..-","-.--","--.."};
+        
+        set<string> res;
+        for(auto i:words){
+            string code = "";
+            for(auto j:i){
+                code+=morse[int(j) - int('a')];
+            }
+            res.insert(code);
+        }
+        return res.size();
+    }
+};

@@ -1,0 +1,29 @@
+class Solution {
+public:
+    vector<string> generateParenthesis(int n) {
+        vector<string> res,res2;
+        string s1(n,'(');
+        string s2(n,')');
+        string s=s1+s2;
+        do res.push_back(s);
+        while (next_permutation(s.begin(),s.end()));
+        
+        for (auto i:res){
+            bool f = true;
+            int c=0;
+            for(char j:i){
+                
+                if(j=='(')
+                    c+=1;
+                else 
+                    c-=1;
+                
+                if (c<0){f = false;}
+                    
+                
+            }
+            if(f) res2.push_back(i);
+        }
+        return res2;
+    }
+};
