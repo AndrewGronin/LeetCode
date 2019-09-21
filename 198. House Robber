@@ -1,0 +1,27 @@
+//https://leetcode.com/problems/house-robber/
+class Solution {
+public:
+    int rob(vector<int> &num) {// dynamic programming solution
+
+			if (num.size() == 0)
+				return 0;
+			else if (num.size() == 1)
+				return num[0];
+        
+			vector<int> res(num.size(), 0);			    			
+			for (int i = 0; i < num.size(); i++) {
+
+				int prev1 = 0;
+				if (i >= 3)
+					prev1 = res[i - 3];
+
+				int prev2 = 0;
+				if (i >= 2)
+					prev2 = res[i - 2];
+
+				res[i] = max(prev1, prev2) + num[i];
+			}
+			
+			return max(res[num.size() - 1], res[num.size() - 2]);
+    }
+};
