@@ -1,0 +1,41 @@
+//https://leetcode.com/problems/permutation-sequence/
+class Solution {
+public:
+    string getPermutation(int n, int k) {
+        if(n==1)return "1";
+        vector<int>nums;
+        vector<int>res;
+        int f=1;
+        for(int i =1 ; i<= n;++i){
+            f*=i;
+            nums.push_back(i);
+        }
+        int t=k,temp;
+        for(int i =0 ; i< n-2;++i){
+            f/=n-i;
+            cout<<t<<" "<<f<<" "<<t/f<<endl;
+            temp = t/f;
+            if (t%f==0)temp--;
+            res.push_back(nums[temp]);
+            nums.erase(nums.begin()+temp);
+            if (t>f && t%f!=0)
+                 t=t%f;
+            if(t%f == 0)
+                 t = (t-1)%f;
+            
+        }
+        if(k%2==1){
+            res.push_back(nums[0]);
+            res.push_back(nums[1]);
+        }else{
+            res.push_back(nums[1]);
+            res.push_back(nums[0]);
+        }
+        //for(auto i:res)cout<<i;
+        string s;
+        for(int i:res){
+            s+=to_string(i);
+        }
+        return s;
+    }
+};
