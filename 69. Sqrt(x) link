@@ -2,6 +2,34 @@
 class Solution {
 public:
     int mySqrt(int x) {
-        return sqrt(x)/1;//  не,ну а что? в условии ничего не запрещали
+        if (0 == x) return 0;
+        int left = 1, right = x, ans;
+        while (left <= right) {
+            int mid = left + (right - left) / 2;
+            if (mid*mi <= x ) {
+                left = mid + 1;
+                ans = mid;
+            } else {
+                right = mid - 1;
+            }
+        }
+        return ans;
     }
 };
+
+int stringToInteger(string input) {
+    return stoi(input);
+}
+
+int main() {
+    string line;
+    while (getline(cin, line)) {
+        int x = stringToInteger(line);
+        
+        int ret = Solution().mySqrt(x);
+
+        string out = to_string(ret);
+        cout << out << endl;
+    }
+    return 0;
+}
