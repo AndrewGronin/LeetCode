@@ -1,0 +1,8 @@
+//https://leetcode.com/problems/sort-array-by-parity/
+class Solution {
+public:
+    vector<int> sortArrayByParity(vector<int>& A) {
+    partition (A.begin (), A.end (), [] (auto e) { return e % 2 == 0; });
+    return A;
+}
+};
