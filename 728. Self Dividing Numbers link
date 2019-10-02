@@ -1,0 +1,29 @@
+//https://leetcode.com/problems/self-dividing-numbers/
+class Solution {
+public:
+    bool isSelfDividing(int a){
+        bool f = true;
+        int n = a, d;
+        while(f && n>0){
+            d=n%10;
+            if (d == 0)f=0;
+            else{
+            n/=10;
+            if(a%d != 0)f=0;
+            }
+            
+        }
+        return f;
+        
+    }
+    
+    vector<int> selfDividingNumbers(int left, int right) {
+        //cout<<isSelfDividing(10);
+        vector<int> res;
+        for(int i = left; i<=right; i++){
+            if(isSelfDividing(i))
+                res.push_back(i);
+        }
+        return res;
+    }
+};
