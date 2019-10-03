@@ -1,0 +1,15 @@
+//https://leetcode.com/problems/unique-number-of-occurrences/
+class Solution {
+public:
+    bool uniqueOccurrences(vector<int>& arr) {
+        map<int,int> count;
+        for(auto i:arr){
+            count[i]++;
+        }
+        set<int> s;
+        for(auto i:count){
+            s.insert(i.second);
+        }
+        return s.size()==count.size();
+    }
+};
