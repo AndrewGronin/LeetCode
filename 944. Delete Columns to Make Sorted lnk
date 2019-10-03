@@ -1,0 +1,15 @@
+//https://leetcode.com/problems/delete-columns-to-make-sorted/
+class Solution {
+public:
+    int minDeletionSize(vector<string>& A) {
+        int ans = 0;
+        for (int c = 0; c < A[0].length(); ++c)
+            for (int r = 0; r < A.size() - 1; ++r)
+                if (A[r][c] > A[r+1][c]) {//если нет порядка значит удаляем(такая легкая задача и такое дурацкое условие)
+                    ans++;
+                    break;
+                }
+
+        return ans;
+    }
+};
