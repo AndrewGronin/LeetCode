@@ -1,0 +1,14 @@
+//https://leetcode.com/problems/contains-duplicate/
+class Solution {
+public:
+    bool containsDuplicate(vector<int>& nums) {
+       set<int> s;
+        for(auto i:nums){
+            auto b=s.insert(i);
+           // cout<<b.second;
+        }
+       // cout<<s.size()<<nums.size();
+        return !(s.size()==nums.size());
+    }
+    
+};
