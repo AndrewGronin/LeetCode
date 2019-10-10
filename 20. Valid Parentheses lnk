@@ -1,0 +1,33 @@
+//https://leetcode.com/problems/valid-parentheses/
+class Solution {
+private:
+    bool isMatch(char left, char right) {
+        if(left == '(' && right == ')') return true;
+        if(left == '[' && right == ']') return true;
+        if(left == '{' && right == '}') return true;
+    return false;
+}
+public:
+    bool isValid(string s) {//
+        //добовляю в стэк открывающие скобки
+        //проверяю соответсвие закрывающей с открывающей
+        //если сошлись то удаляю пару и иду дальше
+        //если нет ошибка
+        //если стэк не пуст тоже
+        stack<char> matchStack;
+        for(int i=0; i<s.size(); i++) {
+            if(s[i] == '(' || s[i] == '[' || s[i] == '{')
+                matchStack.push(s[i]);
+            else if(matchStack.empty())
+                return false;
+            else if(isMatch(matchStack.top(), s[i])) {
+                matchStack.pop();
+            } else if(!isMatch(matchStack.top(), s[i]))
+                return false;
+        }
+        if(matchStack.empty())
+            return true;
+        else 
+            return false;
+    }
+};
