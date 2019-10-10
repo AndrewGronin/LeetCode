@@ -1,0 +1,30 @@
+//https://leetcode.com/problems/sort-array-by-parity-ii/
+class Solution {
+public:
+    vector<int> sortArrayByParityII(vector<int>& A) {
+    vector<int> res;
+    int odd = 0, even = 0;
+    int cur = 0;
+        while(cur<A.size()){
+            if(cur%2 == 0 && A[odd]%2 == 0){
+                res.push_back(A[odd]);
+                odd++;
+                cur++;
+            }
+            if(cur%2 == 0 && A[odd]%2 == 1){
+                odd++;
+            }
+            if(cur%2 == 1 && A[even]%2 == 1){
+                res.push_back(A[even]);
+                even++;
+                cur++;
+            }
+            if(cur%2 == 1 && A[even]%2 == 0){
+                even++;
+            }
+        
+        
+    }
+              return res;
+    }
+};
