@@ -1,0 +1,20 @@
+//https://leetcode.com/problems/detect-capital/
+class Solution {
+public:
+    bool detectCapitalUse(string word) {
+        int k;
+        if(word[0]>='A' && word[0]<='Z')k=0;
+        if(word[0]>='a' && word[0]<='z')k=1;
+        int c=0;
+        
+        
+        for(int i = 0;i<word.size();++i){
+            if((k==1 && word[i]>='A' && word[i]<='Z'))return false;
+            if((k==0 && word[i]>='A' && word[i]<='Z'))c++;
+            
+        }
+        if(c==0)return true;
+        if(c==1 && word[0]>='A' && word[0]<='Z')return 1;
+        return c==word.size();
+    }
+};
