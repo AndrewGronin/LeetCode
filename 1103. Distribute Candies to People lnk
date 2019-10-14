@@ -1,0 +1,17 @@
+//https://leetcode.com/problems/distribute-candies-to-people/
+class Solution {
+public:
+    vector<int> distributeCandies(int candies, int num_people) {
+        vector<int>res(num_people,0);
+        int n = 1,cur = 0;
+        while(candies-n>=0){
+            res[cur]+=n;
+            candies-=n;
+            n++;
+            cur++;
+            if(cur == res.size())cur=0;
+        }
+        res[cur]+=candies;
+        return res;
+    }
+};
