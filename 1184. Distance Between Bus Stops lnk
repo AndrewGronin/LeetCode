@@ -1,0 +1,15 @@
+//https://leetcode.com/problems/distance-between-bus-stops/
+class Solution {
+public:
+    int distanceBetweenBusStops(vector<int>& distance, int start, int destination) {
+        int l=0,r=0;
+        if (start>destination)swap(start,destination);
+        for(int i = 0;i<distance.size();i++){
+            if(i>=start && i<destination)l+=distance[i];
+            else
+            r+=distance[i];
+        }
+        cout<<l<<r;
+        return min(r,l);
+    }
+};
