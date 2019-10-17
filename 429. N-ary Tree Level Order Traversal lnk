@@ -1,0 +1,39 @@
+//https://leetcode.com/problems/n-ary-tree-level-order-traversal/
+/*
+// Definition for a Node.
+class Node {
+public:
+    int val;
+    vector<Node*> children;
+
+    Node() {}
+
+    Node(int _val, vector<Node*> _children) {
+        val = _val;
+        children = _children;
+    }
+};
+*/
+class Solution {
+public:
+    vector<vector<int> > res;
+
+void DFS(Node* root, int level)
+{
+    if (root == NULL) return;
+    if (level == res.size()) // The level does not exist in output
+    {
+        res.push_back(vector<int>()); // Create a new level
+    }
+    
+    res[level].push_back(root->val);
+    for(auto i:root->children)// Add the current value to its level
+    DFS(i, level+1); // Go to the next level
+    
+}
+
+vector<vector<int> > levelOrder(Node *root) {
+    DFS(root, 0);
+    return res;
+}
+};
