@@ -1,0 +1,21 @@
+//https://leetcode.com/problems/reshape-the-matrix/
+class Solution {
+public:
+    vector<vector<int>> matrixReshape(vector<vector<int>>& nums, int r, int c) {
+        vector<int>line;
+        vector<vector<int>> res(r);
+        for(auto i:nums)
+            for(auto j:i)
+                line.push_back(j);
+        if(line.size()!=r*c)return nums;
+        int cur = 0;
+        for(int i = 0;i<r;i++){
+            for(int j = 0;j<c;j++){
+               // if(cur<line.size()){
+                res[i].push_back(line[cur]);
+                cur++;
+            }
+        }
+        return res;
+    }
+};
