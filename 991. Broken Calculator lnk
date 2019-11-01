@@ -1,0 +1,36 @@
+//https://leetcode.com/problems/broken-calculator/
+class Solution {//задом наперед
+public:
+    int brokenCalc(int x, int y) {
+          int c = 0;
+        while (y > x) {
+            c++;
+            if (y % 2 == 1)
+                y++;
+            else
+                y /= 2;
+        }
+
+        return c + x - y;
+    
+    }
+};
+
+int stringToInteger(string input) {
+    return stoi(input);
+}
+
+int main() {
+    string line;
+    while (getline(cin, line)) {
+        int X = stringToInteger(line);
+        getline(cin, line);
+        int Y = stringToInteger(line);
+        
+        int ret = Solution().brokenCalc(X, Y);
+
+        string out = to_string(ret);
+        cout << out << endl;
+    }
+    return 0;
+}
