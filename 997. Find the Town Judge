@@ -1,0 +1,27 @@
+//https://leetcode.com/problems/find-the-town-judge/
+class Solution {
+public:
+    int findJudge(int N, vector<vector<int>>& trust) {
+        if (N == 1)return 1;
+        map<int,pair<int,int>> res;//кто, сколикм доверился, сколо доверяют
+        
+        for(auto i:trust){
+            res[i[0]].first++;
+            res[i[1]].second++;
+        }
+        
+        
+        for(auto i:res){
+            cout<<i.first<<":"<<i.second.first<<" "<<i.second.second<<endl;
+            
+        }
+        
+        
+        
+        for(auto i:res){
+            if(i.second.first == 0 && i.second.second == N-1)
+                return i.first;
+        }
+        return -1;
+    }
+};
