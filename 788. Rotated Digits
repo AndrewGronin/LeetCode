@@ -1,0 +1,21 @@
+//https://leetcode.com/problems/rotated-digits/
+class Solution {
+public:
+   bool is_valid (int N) {
+    bool res = false;
+    while (N) {
+        int d = N % 10;
+        if (d == 2 || d == 5 || d == 6 || d == 9) res = true;
+        if (d == 3 || d == 4 || d == 7) return false;
+        N /= 10;
+    }
+    return res;
+}
+
+int rotatedDigits(int N) {
+    int c = 0;
+    for (int i = 1; i <= N; i++)
+        if (is_valid (i)) c++;
+    return c;
+}
+};
