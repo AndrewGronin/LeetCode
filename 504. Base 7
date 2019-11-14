@@ -1,0 +1,21 @@
+//https://leetcode.com/problems/base-7/
+class Solution {
+public:
+    string convertToBase7(int num) {
+        string res,rev;
+        if(num < 0){
+            res+="-";
+            num*=-1;
+        }
+        if(num == 0)
+            return "0";
+        while(num>0){
+            int dig = num%7;
+            rev+=to_string(dig);
+            num/=7;
+        }
+        reverse(rev.begin(),rev.end());
+        return res+rev;
+        
+    }
+};
