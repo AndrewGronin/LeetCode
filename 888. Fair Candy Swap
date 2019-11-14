@@ -1,0 +1,13 @@
+//https://leetcode.com/problems/fair-candy-swap
+class Solution {
+public:
+    vector<int> fairCandySwap(vector<int>& A, vector<int>& B) {
+        int a = accumulate(A.begin(),A.end(),0);
+        int b = accumulate(B.begin(),B.end(),0);
+        for(auto i:A)
+            for(auto j:B)
+                if(a-i+j == b-j+i)
+                    return {i,j};
+        return {};
+    }
+};
