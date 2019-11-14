@@ -1,0 +1,13 @@
+//https://leetcode.com/problems/goat-latin
+class Solution(object):
+    def toGoatLatin(self, S):
+        c=1
+        res=[]
+        vow=set('aeiouAEIOU')
+        for word in S.split():
+            if word[0] in vow:
+                res.append(word+'ma'+'a'*c)
+            else:
+                res.append(word[1:]+word[0]+'ma'+'a'*c)
+            c+=1
+        return ' '.join(res)
