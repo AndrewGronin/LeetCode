@@ -1,0 +1,11 @@
+//https://leetcode.com/problems/distribute-candies/
+class Solution {
+public:
+    int distributeCandies(vector<int>& candies) {
+        set<int> s;
+        for (int i : candies) 
+            s.insert(i);
+        return min(s.size(), candies.size() / 2);
+        //если candies.size() / 2 > s.size() то конфет как миниму по две и возвращаю размер сэта
+    }
+};
