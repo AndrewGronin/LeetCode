@@ -1,0 +1,24 @@
+//https://leetcode.com/problems/design-hashset/
+class MyHashSet {
+public:
+    /** Initialize your data structure here. */
+    bool h[1000000];
+    MyHashSet() {
+      for(int i = 0;i<1000000;i++){
+          h[i] = false;
+      }
+    }
+    
+    void add(int key) {
+        h[key] = true;
+    }
+    
+    void remove(int key) {
+        h[key] = false;
+    }
+    
+    /** Returns true if this set contains the specified element */
+    bool contains(int key) {
+        return h[key];
+    }
+};
