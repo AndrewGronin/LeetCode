@@ -1,0 +1,26 @@
+//https://leetcode.com/problems/baseball-game/
+class Solution {
+public:
+    int calPoints(vector<string>& ops) {
+        vector<int> res;
+        int cur = -1;
+        for(auto i:ops){
+            if(i == "C"){
+                res.pop_back();
+                cur--;
+            }else
+                if(i == "D"){
+                    res.push_back(res[cur]*2);
+                    cur++;
+                }
+            else if(i == "+"){
+                 res.push_back(res[cur]+res[cur-1]);
+                cur++;
+            }else{
+                res.push_back(stoi(i));
+                cur++;
+            }
+        }
+        return accumulate(res.begin(),res.end(),0);
+    }
+};
