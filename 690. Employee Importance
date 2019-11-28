@@ -1,0 +1,45 @@
+//https://leetcode.com/problems/employee-importance/
+/*
+// Employee info
+class Employee {
+public:
+    // It's the unique ID of each node.
+    // unique id of this employee
+    int id;
+    // the importance value of this employee
+    int importance;
+    // the id of direct subordinates
+    vector<int> subordinates;
+};
+*/
+class Solution {
+public:
+    int sum;
+   // int getImportance(vector<Employee*> employees, int id)
+    void dfs(vector<Employee*> employees,int id){
+        for(auto i:employees){
+            if(i->id == id){
+                sum+=i->importance;
+                for(auto j:i->subordinates){//j номер подчиненного
+                    for(auto k:employees){
+                        if(k->id == j){
+                            //sum+=k->importance;
+                            cout<<sum<<" ";
+                         dfs(employees,k->id);   
+                            
+                        }
+                    }
+                }
+                
+                
+            }
+        }
+    }
+    
+    int getImportance(vector<Employee*> employees, int id) {
+        sum = 0;
+        dfs(employees,id);
+        
+        return sum;
+    }
+};
