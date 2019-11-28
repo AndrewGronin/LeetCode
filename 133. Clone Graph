@@ -1,0 +1,41 @@
+//https://leetcode.com/problems/clone-graph/
+class Node {
+public:
+    int val;
+    vector<Node*> neighbors;
+
+    Node() {}
+
+    Node(int _val, vector<Node*> _neighbors) {
+        val = _val;
+        neighbors = _neighbors;
+    }
+};
+*/
+class Solution {
+public:
+    Node *cloneGraph(Node *node) {
+        if (node == nullptr)
+            return nullptr;
+        else
+            return cloneGraphHelper(node);
+    }
+    
+private:
+    unordered_map<int, Node *> record;
+    
+    Node *cloneGraphHelper(Node *node) {
+        
+        auto new_node = new Node(node->val);
+        record[new_node->val] = new_node;
+        
+        for(auto n : node->neighbors) {
+            if(record.count(n->val)) {
+                new_node->neighbors.push_back(record[n->val]);
+            } else {
+                new_node->neighbors.push_back(cloneGraphHelper(n));
+            }
+        }
+        return new_node;
+    }
+};
