@@ -1,0 +1,32 @@
+//https://leetcode.com/problems/relative-ranks/
+class Solution {
+public:
+    vector<string> findRelativeRanks(vector<int>& nums) {
+    
+   priority_queue<int> Q;
+   for(int num : nums)
+   Q.push(num);
+   int c = 0; 
+    vector<string> ans(nums.size());
+    while(Q.size() > 0)
+    {c++;
+        int temp = Q.top();
+        Q.pop();
+        for(int i=0;i<nums.size();i++)
+            if(nums[i] == temp)
+            {
+                if(c == 1)
+                    ans[i] = "Gold Medal";
+                else if(c == 2)
+                    ans[i] = "Silver Medal";
+                else if(c == 3)
+                    ans[i] = "Bronze Medal";
+                else
+                    ans[i] = to_string(c);
+                break;
+            }
+        
+    }
+    return ans;
+}
+};
