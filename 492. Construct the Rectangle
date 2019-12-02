@@ -1,0 +1,12 @@
+//https://leetcode.com/problems/construct-the-rectangle/
+class Solution {
+public:
+    vector<int> constructRectangle(int area) {
+        int a=sqrt(area) , b=sqrt(area);
+        while(a*b!=area){
+            if(a*b>area)b--;
+            else a++;
+        }
+        return{a,b};
+    }
+};
