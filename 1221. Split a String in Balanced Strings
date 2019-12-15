@@ -1,0 +1,19 @@
+//https://leetcode.com/problems/split-a-string-in-balanced-strings/
+class Solution {
+public:
+    int balancedStringSplit(string s) {
+        int lc = 0 , rc = 0 ,c = 0;
+        for(auto i:s){
+            if(i == 'R')
+                rc++;
+            if(i == 'L')
+                lc++;
+            if(lc == rc){
+                c++;
+                //lc = 0;
+                //rc = 0;
+            }
+        }
+        return c;
+    }
+};
