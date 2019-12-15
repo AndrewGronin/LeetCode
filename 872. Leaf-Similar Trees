@@ -1,0 +1,35 @@
+//https://leetcode.com/problems/leaf-similar-trees/
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    vector<int> r1 , r2;
+    
+    void helper(TreeNode* root, vector<int>& r){
+        if(root){
+        if(root->left == NULL && root->right == NULL){
+            r.push_back(root->val);
+        }else
+        {
+            helper(root->left,r);
+            helper(root->right,r);
+        }
+        }
+        
+        
+    }
+        
+        
+    bool leafSimilar(TreeNode* root1, TreeNode* root2) {
+        helper(root1,r1);
+         helper(root2,r2);
+        return r1 == r2;
+    }
+};
