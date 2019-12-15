@@ -1,0 +1,15 @@
+//https://leetcode.com/problems/number-of-recent-calls/
+class RecentCounter {
+    set<int> history;
+public:
+    int ping( int t ){
+        history.insert( t );
+        return distance( history.lower_bound( t - 3000 ), history.end() );
+    }
+};
+
+/**
+ * Your RecentCounter object will be instantiated and called as such:
+ * RecentCounter* obj = new RecentCounter();
+ * int param_1 = obj->ping(t);
+ */
